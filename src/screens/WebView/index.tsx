@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {Platform, SafeAreaView, StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
 
 export default function WebViewContainer() {
@@ -7,14 +7,14 @@ export default function WebViewContainer() {
     <SafeAreaView style={styles.container}>
       <WebView
         source={{
-          uri: 'https://192.168.0.67:5173',
+          uri: 'https://192.168.0.154:5173',
         }}
         allowsUnsecureHttps
         style={{flex: 1}}
         startInLoadingState
-        useWebKit
-        originWhitelist={['*']}
         allowsInlineMediaPlayback
+        useWebKit={Platform.OS === 'android'}
+        originWhitelist={['*']}
         mediaPlaybackRequiresUserAction={false}
         mixedContentMode="always"
       />
